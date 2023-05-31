@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: pods
+  labels:
+    type: pods
+spec:
+  containers:
+  - name: con1
+    image: nginx
+    ports:
+    - containerPort: 80
+  - name: con2
+    image: centos
+    command: ["/bin/bash","-c","while true;do curl http://localhost;sleep 100;done"]

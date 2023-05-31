@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: demo
+  name: twopods
+spec:
+  containers:
+  - name: cont-1
+    image: centos
+    command: 
+    - "/bin/echo hello"
+

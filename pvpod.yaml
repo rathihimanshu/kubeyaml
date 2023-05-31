@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pvpod
+spec:
+  containers:
+  - name: c1
+    image: nginx
+    volumeMounts:
+    - mountPath: /usr/share/nginx/html
+      name: myvol
+#  - name: c2
+#    image: centos:6
+#    volumeMounts:
+#    - mountPath: /usr/share/nginx/html
+#      name: myvol
+#    command: ['/bin/sh','-c','while true;do X=$[$X+1];echo $X > /usr/share/nginx/html/index.html;sleep 1;done']
+#  nodeName: gke-mycluster-default-pool-771c64ed-rz45 
+  volumes:
+  - name: myvol
+    persistentVolumeClaim:
+      claimName: mypvc

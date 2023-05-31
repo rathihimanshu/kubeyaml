@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: mongopod
+spec:
+#nodeName: gke-mycluster-default-pool-e46cb2db-k7s3
+  containers:
+  - name: mongo
+    image: mongo
+    volumeMounts:
+    - name: gcepd
+      mountPath: /data/db
+  volumes:
+  - name: gcepd
+    persistentVolumeClaim:
+      claimName: demopvc

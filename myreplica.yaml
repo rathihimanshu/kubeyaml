@@ -1,0 +1,21 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: myreplica
+#  namespace: mynamespace
+spec:
+  replicas: 4
+#  selector:
+#    matchLabels:
+#    - type: demopods
+  template:
+    metadata:
+      name: r1
+      labels:
+        type: demopods
+    spec:
+      containers:
+      - name: c11
+        image: nginx
+  
+

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: podwithcommand
+  namespace: demo
+  labels:
+    type: cmd
+spec:
+  containers:
+  - name: centos1
+    image: centos
+    command: ["/bin/bash"]
+    args: ["-c","while true;do X=$[$X+1];echo $X;sleep 1;done"]

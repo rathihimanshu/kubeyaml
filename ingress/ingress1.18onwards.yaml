@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress
+  annotations:
+    # If the class annotation is not specified it defaults to "gce".
+    kubernetes.io/ingress.class: "gce"
+spec:
+#  defaultBackend: greenserve
+  ingressClassName: gce
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: greenserve
+            port:
+              number: 80
+        path: /green.html
+        pathType: ImplementationSpecific
+      - backend:
+          service:
+            name: yellowserve
+            port:
+              number: 80
+        path: /yellow.html
+        pathType: ImplementationSpecific

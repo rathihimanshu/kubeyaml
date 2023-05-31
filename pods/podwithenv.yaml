@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  namespace: demo
+  name: podwithenv
+  labels:
+    type: demo
+spec:
+#  replicas: 2
+  containers:
+  - name: podone
+    image: nginx
+    env:
+    - name: var1
+      value: value1

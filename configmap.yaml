@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:   
+  name: conf1
+  namespace: test
+data:
+  var1: value1

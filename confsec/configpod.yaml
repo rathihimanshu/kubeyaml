@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: testpod
+spec:
+  containers:
+  - name: c1
+    image: centos:6
+    command: [/bin/sh,-c,'sleep 3600']
+    env:
+    - name: value
+      valueFrom:
+        configMapKeyRef: 
+          name: game-config-env-file
+          key: enemies
+    env:
+      - name: value2
+        valueFrom:
+          secretKeyRef:
+            name: mysecret
+            key: username

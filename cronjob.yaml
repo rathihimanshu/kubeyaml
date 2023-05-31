@@ -1,0 +1,16 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: mycron
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      completions: 50
+      template:
+        spec:
+          containers:
+          - name: c1
+            image: centos:6
+            command: ['/bin/sh','-c','sleep 5']
+          restartPolicy: Never

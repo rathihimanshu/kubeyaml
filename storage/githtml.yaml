@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: gitrepo
+spec:
+  containers:
+  - name: c1
+    image: centos:6
+    command: ['/bin/sh','-c','while true;do echo hello;sleep 1;done']
+  - image: nginx
+    name: webserver
+    volumeMounts:
+    - mountPath: /usr/share/nginx/
+      name: app-git
+  volumes:
+  - name: app-git
+    gitRepo:
+      repository: "https://github.com/rathihimanshu/html.git"
+    

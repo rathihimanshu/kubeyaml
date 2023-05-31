@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: j1
+spec:
+  completions: 5
+  parallelism: 2
+#  selector:
+#    matchLabels:
+#      obj: job
+  template:
+    metadata:
+      name: jobpod
+      labels:
+        obj: job
+    spec:
+      containers:
+      - name: j1pod
+        image: centos:6
+        command: ['/bin/sh','-c','sleep 10']
+      restartPolicy: Never

@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: myingress
+spec:
+  backend:
+  rules:
+  - http:
+      paths:
+      - backend: 
+          serviceName: greenservice
+          servicePort: 80
+        path: /green.html
+      - backend:
+          serviceName: yellowservice
+          servicePort: 80
+        path: /yellow.html
+      
